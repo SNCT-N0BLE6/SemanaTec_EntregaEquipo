@@ -32,23 +32,52 @@ def square(start, end):
     for count in range(4):
         forward(end.x - start.x)
         left(90)
-
     end_fill()
 
 
-def circle(start, end):
+def circle(start, end): #Añadimos la funcion para crear un circulo de tamaño predeterminado
     """Draw circle from start to end."""
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(180): #Va correr 180 veces, avanzara 2 puntos y luego girara 2 grados. 
+        forward(2)
+        left(2)
+    end_fill()
+    pass  # TODO
+
+
+def rectangle(start, end): #Añadimos la funcion para crear un rectangulo, el cual sus lados verticales seran la mitad del valor dado paralos horizontales
+    """Draw rectangle from start to end."""
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(2):
+        forward(end.x - start.x)
+        left(90)
+        forward(end.x/2 - start.x/2)
+        left(90)
+    end_fill()
     
     pass  # TODO
 
 
-def rectangle(start, end):
-    """Draw rectangle from start to end."""
-    pass  # TODO
-
-
-def triangle(start, end):
+def triangle(start, end): #Funcion para triangulo, avanza una distancia indicada, luego gira 120 grados
     """Draw triangle from start to end."""
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(3):
+        forward(end.x - start.x)
+        left(120)
+
+    end_fill()
     pass  # TODO
 
 
@@ -87,3 +116,4 @@ onkey(lambda: store('shape', circle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
+
