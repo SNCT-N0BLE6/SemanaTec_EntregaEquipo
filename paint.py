@@ -1,28 +1,18 @@
-"""Paint, for drawing shapes.
-
-Exercises
-
-1. Add a color.
-2. Complete circle.
-3. Complete rectangle.
-4. Complete triangle.
-5. Add width parameter.
-"""
-
 from turtle import *
 
 from freegames import vector
+#Vamos a utilizar el package de freegames, el cual contiene "Paint", necesario para la actividad.
 
-
-def line(start, end):
+def line(start, end): #Define "line"
     """Draw line from start to end."""
     up()
     goto(start.x, start.y)
     down()
     goto(end.x, end.y)
+# Lo que line hace es agarrar la posicion x/y del primer click del mouse, y luego moverse a la segunda posicion
+# dejando una linea del color seleccionado.
 
-
-def square(start, end):
+def square(start, end): #Define "square"
     """Draw square from start to end."""
     up()
     goto(start.x, start.y)
@@ -32,8 +22,9 @@ def square(start, end):
     for count in range(4):
         forward(end.x - start.x)
         left(90)
-    end_fill()
-
+    end_fill() #end fill indica cuando se rellenara la figura
+# Similar a line, utilizara la distancia entre los 2 clicks para crear un cuadrado.
+# En este caso, por 4 ciclos, recorrera la distancia dada, luego girara 90 grados a la izquierda. Asi dando nuestro cuadrado.
 
 def circle(start, end): #Añadimos la funcion para crear un circulo de tamaño predeterminado
     """Draw circle from start to end."""
@@ -81,7 +72,7 @@ def triangle(start, end): #Funcion para triangulo, avanza una distancia indicada
     pass  # TODO
 
 
-def tap(x, y):
+def tap(x, y): #Tap se quedara con el valor inicial de la figura dibujada.
     """Store starting point or draw shape."""
     start = state['start']
 
@@ -100,9 +91,10 @@ def store(key, value):
 
 
 state = {'start': None, 'shape': line}
-setup(420, 420, 370, 0)
+setup(420, 420, 370, 0) #Le damos un tamaño a nuestro canvas.
 onscreenclick(tap)
 listen()
+#onkey hace que cuando una tecla sea presionada, tal accion suceda. Ya sea cambiar color o hacer figuras.
 onkey(undo, 'u')
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
@@ -116,4 +108,3 @@ onkey(lambda: store('shape', circle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
-
